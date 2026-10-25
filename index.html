@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Browse and filter internship opportunities across product, engineering, and design teams."
+    />
+    <title>Internship Board</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to internship listings</a>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <div>
+          <p class="eyebrow">Career hub</p>
+          <h1>Internship Board</h1>
+        </div>
+        <div class="header-metrics" aria-label="Board statistics">
+          <div class="metric">
+            <span class="metric-value" id="totalInternships">0</span>
+            <span class="metric-label">Open roles</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">Remote-first</span>
+            <span class="metric-label">Flexible</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content" class="container board-shell">
+      <aside class="filters" aria-label="Internship filters">
+        <div class="filters-header">
+          <h2>Find your fit</h2>
+          <button type="button" class="reset-button" id="clearFilters">Clear all</button>
+        </div>
+
+        <form class="filter-form" id="filterForm">
+          <div class="field-group">
+            <label for="searchInput">Search</label>
+            <input
+              id="searchInput"
+              name="search"
+              type="search"
+              placeholder="Search by role, company, or skill"
+              autocomplete="off"
+            />
+          </div>
+
+          <div class="field-group">
+            <label for="domainFilter">Domain</label>
+            <select id="domainFilter" name="domain">
+              <option value="all">All domains</option>
+              <option value="frontend">Frontend</option>
+              <option value="backend">Backend</option>
+              <option value="data">Data</option>
+              <option value="design">Design</option>
+              <option value="product">Product</option>
+            </select>
+          </div>
+        </form>
+      </aside>
+
+      <section class="results" aria-labelledby="resultsHeading">
+        <div class="results-topbar">
+          <div>
+            <p class="eyebrow">Latest matches</p>
+            <h2 id="resultsHeading">Available internships</h2>
+          </div>
+          <p id="resultsCount" class="results-count" aria-live="polite">0 roles</p>
+        </div>
+
+        <div id="statusMessage" class="status" aria-live="polite" hidden></div>
+        <ul id="internshipsList" class="internship-list" aria-live="polite"></ul>
+      </section>
+    </main>
+
+    <template id="internshipTemplate">
+      <li class="internship-item">
+        <article class="internship-card" tabindex="0">
+          <div class="card-top">
+            <div>
+              <p class="company-name"></p>
+              <h3 class="role-title"></h3>
+            </div>
+            <span class="pill domain-pill"></span>
+          </div>
+
+          <div class="location-row">
+            <span class="meta-tag location-tag"></span>
+            <span class="meta-tag type-tag"></span>
+          </div>
+
+          <p class="summary"></p>
+
+          <div class="skills" aria-label="Required skills"></div>
+
+          <div class="card-actions">
+            <button class="secondary-button" type="button">View details</button>
+            <a href="#" class="primary-button">Apply now</a>
+          </div>
+
+          <div class="details-panel" hidden>
+            <p class="details-copy"></p>
+          </div>
+        </article>
+      </li>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>
